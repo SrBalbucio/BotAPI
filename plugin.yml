@@ -1,0 +1,9 @@
+name: BotAPI
+version: 1.0
+main: xyz.balbucio.Main
+prefix: BotAPI
+author: Sr_Balbucio
+description: API para criação de Bots inteligentes
+commands:
+ addnpc:
+  description: Adiciona um NPC   
