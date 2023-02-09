@@ -1,5 +1,7 @@
 package xyz.balbucio;
 
+import java.util.ArrayList;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
@@ -17,15 +19,21 @@ public class BotAPI {
 
 	private static BotAPI instance;
 	private JavaPlugin main;
+	public ArrayList<PlayerBot> bots = new ArrayList<>();
 
 	public BotAPI(JavaPlugin main) {
 		this.main = main;
 		instance = this;
 	}
 	
-	private void registerListeners() {
+	public void registerListeners() {
 		PluginManager manager = Bukkit.getPluginManager();
 		manager.registerEvents(new NavigationListener(), main);
+	}
+	
+	public void clear() {
+		bots.stream().forEach(p -> p.getNpc().destroy());
+		bots.clear();
 	}
 
 	public static BotAPI getInstance() {

@@ -12,6 +12,7 @@ public class Main extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		this.api = new BotAPI(this);
+		api.registerListeners();
 		this.getCommand("addnpc").setExecutor(new AddNpcCommand());
 	}
 
@@ -22,8 +23,6 @@ public class Main extends JavaPlugin {
 
 	@Override
 	public void onDisable() {
+		api.clear();
 	}
-	
-	
-
 }
